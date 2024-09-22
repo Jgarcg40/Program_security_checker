@@ -1,3 +1,3 @@
-# Program_security_checker
+# Acerca del proyecto
 Este proyecto, correspondiente al Trabajo de Fin de Máster (TFM) de la Universidad Europea de Madrid, presenta una aplicación que, al introducir en un archivo .txt los programas junto con sus versiones (formato programa-versión), muestra una nota de seguridad, las probabilidades de distintos tipos de ataques y las CVE asociadas.
 El repositorio incluye el código empleado para la creación y prueba de los modelos utilizados, con el fin de determinar cuál de las IAs es más eficiente para la predicción de posibles ataques. Además, contiene el programa utilizado para extraer todas las CVEs almacenadas en la NVD (National Vulnerability Database) para el entrenamiento de las IAs, así como el código del programa final que incorpora el mejor modelo y una interfaz gráfica. 
