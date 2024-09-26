@@ -157,10 +157,15 @@ def process_file(file_path):
             sources = ', '.join(attack_sources[attack])
             result_text.insert(tk.END, f"\n• {attack}: {probability:.2f}%\n   - {sources}\n", "data")
 
-        result_text.insert(tk.END, "\n\nCVEs recolectados:\n\n", "heading")
-        for cve_id, program, version, severity_score in all_cve_ids:
+        # Ordenar las CVEs por el puntaje de severidad (índice 3) de mayor a menor
+        all_cve_ids_sorted = sorted(all_cve_ids, key=lambda x: x[3], reverse=True)
+
+        # Imprimir las CVEs ordenadas
+        result_text.insert(tk.END, "\n\nCVEs recolectados (ordenados por severidad):\n\n", "heading")
+        for cve_id, program, version, severity_score in all_cve_ids_sorted:
             result_text.insert(tk.END,
-                               f"• {cve_id}\n   - Programa: {program.replace('%20', ' ')}\n   - Versión: {version.replace('%20', ' ')}\n   - Severidad: {severity_score}\n\n", "data")
+                               f"• {cve_id}\n   - Programa: {program.replace('%20', ' ')}\n   - Versión: {version.replace('%20', ' ')}\n   - Severidad: {severity_score}\n\n",
+                               "data")
 
     result_text.config(state=tk.DISABLED)
     hide_loading_screen()  # Ocultar pantalla de carga
@@ -213,3 +218,4 @@ result_text.tag_configure("data", foreground="#2C3E50", font=("Arial", 10))
 result_text.config(state=tk.DISABLED)
 
 root.mainloop()
+
